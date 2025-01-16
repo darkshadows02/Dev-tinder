@@ -3,13 +3,22 @@
 
  // we r sending incoming request to the server
  // it is responce handelar
-app.use((req, res)=>{
-        res.send("my side this is konwn server")
+ 
+ 
+ 
+app.get("/user", (req, res)=>{
+         res.send({firstname:"suraj", lastname:"kumar"})
 })
-app.use('test', (req, res)=>{
-      res.send("hello from test server side... ")
+app.post("/user", (req, res)=>{
+        res.send("data sucessfully save to the database")
 })
-
+app.delete("/user", (req, res)=>{
+         res.send("data deleted sucessfully");
+})
+// if i put this on top then it will show for all http request
+app.use("/user",(req, res)=>{
+      res.send("hello my love where r u")
+})
 
  // this is the port where application will run
  app.listen(3000, ()=>{
