@@ -13,6 +13,10 @@
       // res.send("handling the route user 2")
 },
 (req, res, next)=>{
+      // res.send("handling the route user 3")
+        next();
+},
+(req, res, next)=>{
       res.send("handling the route user 3")
 }
 )
