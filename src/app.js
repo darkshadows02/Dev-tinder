@@ -20,15 +20,55 @@ const {userAuth, user_auth}=require("./middlewares/auth")
 // },
 // )
 
+//middlewares
+/*
 app.use("/admin", userAuth);
 
 app.get("/admin/getauthdata", (req, res, next)=>{
       res.send("data sucessfully get")
 })
 
+
 app.get("/user", user_auth, (req, res, next)=>{
          res.send("all user data send")
 }) 
+*/
+
+/*
+   in route handler if they have 4 parameters then first would be
+      errr, req, res, next
+   if 3 then
+      req, res, next
+   if 2 then
+      req, res
+
+*/
+
+app.get("/getUserData", (req, res)=>{
+      try{
+      //      throw new Error("jasdhgd")
+           res.send("it is ok to send data")
+      }catch(err){
+            res.status(500).send("something went wrong")
+      }
+})
+
+//one type of error handling
+app.get("/getuserdata", (req, res)=>{
+     throw new Error("woooo")
+     res.send("user data send")
+})
+// this will handel all and also it is ths most efficent way
+app.use("/",(err, peq, res, next)=>{
+         if(err){
+            res.status(500).send("something went wrong")
+         } 
+})
+// genral use way using try catch way
+
+ 
+
+
 
  
   
